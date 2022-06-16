@@ -29,7 +29,7 @@ public class LibraryWebController {
 
     @RequestMapping("/getBooks")
     public String getAxiosWeb() {
-
+        //load a template in axiosFormat
         return "axiosFormat/getBooks";
     }
 
