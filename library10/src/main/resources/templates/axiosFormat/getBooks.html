@@ -10,19 +10,15 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
-<body onload="fetchBooks()">
+<body onload="fetchBooks() ">
 <div>
 
     <h3>Table Books</h3>
-    <table class="w3-table-all w3-hoverable" >
-        <tr>
-            <td></td>
-        </tr>
+    <table id="booksTable2" class="w3-table-all w3-hoverable">
     </table>
 
-    <hr>
-    <button name="newBookToggleButton" onclick="w3.toggleShow('#newBook')">Add new book</button>
-    <hr>
+    <Br>
+    <button name="newBookToggleButton" class="w3-button w3-padding-16 w3-light-grey w3-right w3-margin-right" onclick="w3.toggleShow('#newBook')">Add new book</button>
 
     <div id="newBook" class="w3-container">
         <form id="createBook">
@@ -44,7 +40,7 @@
 
             <div class="w3-container w3-padding-16">
                 <button type="submit" class="w3-button w3-padding-16 w3-light-grey w3-right w3-margin-right"/>
-                Add new book</button>
+                Create and send book</button>
             </div>
         </form>
     </div>

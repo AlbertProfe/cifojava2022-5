@@ -1,19 +1,40 @@
-
-const createBookRow = (book) => {
-    const bookRow = document.createElement('td');
-    // add book fields to table-data td
-    bookRow.textContent = `${book.bookId} ${book.title} ${book.isbn} ${book.pages} ${book.publishedYear}`;
-    return bookRow;
-};
+//by default when the html is loaded
+//<body onload="fetchBooks() "> the body calls fetchBooks
+//and we hid toggle button button [0]
+document.getElementsByTagName('button')[0].click();
 
 const sendToView = (books) => {
-    const bookRow = document.querySelector('tr');
-    //for-each over all books and for each book
-    //map creates a row
+    //https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Traversing_an_HTML_table_with_JavaScript_and_DOM_Interfaces
+    //https://www.w3schools.com/jsref/dom_obj_table.asp
+    var table = document.getElementById("booksTable2");
     books.map(book => {
-        bookRow.appendChild(createBookRow(book));
+        var tr = document.createElement('TR');
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(book.bookId));
+        tr.appendChild(td);
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(book.title));
+        tr.appendChild(td);
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(book.author));
+        tr.appendChild(td);
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(book.isbn));
+        tr.appendChild(td);
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(book.pages));
+        tr.appendChild(td);
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(book.publishedYear));
+        tr.appendChild(td);
+        table.appendChild(tr);
     });
+    booksTable.appendChild(table);
+
 };
+
+
+
 
 const fetchBooks = () => {
     axios.get('http://localhost:8080/api/getBooks')
@@ -38,6 +59,36 @@ const sendBook = (book) => {
             //and after that we need to hide the form so
             //click the toggle button
             document.getElementsByTagName('button')[0].click();
+            console.log(`VIEW: sent to view and toggle clicked`);
+        })
+        .catch(error => console.error(error));
+};
+
+//to-do
+const deleteBook = (id) => {
+    axios.delete('http://localhost:8080/api/deleteBook/${id}')
+        .then(response => {
+            console.log(`DELETE: book deleted`, id);
+            // remove elem from table
+            //to-do
+        })
+        .catch(error => console.error(error));
+};
+
+//to-do
+const updateBook = (id, book) => {
+    axios.post('http://localhost:8080/api/updateBook/${id}', book)
+        .then(response => {
+            const updatedBook = response.data;
+            console.log(`PUT: book updated`, updatedBook);
+            // send to view, refresh just the table with users
+            //to-do, delete book to update
+            //to-do, send book updated
+            //sendToView([createdBook]);
+            //and after that we need to hide the form so
+            //click the toggle button
+            //to-do: hide update form
+            //document.getElementsByTagName('button')[0].click();
             console.log(`VIEW: sent to view and toggle clicked`);
         })
         .catch(error => console.error(error));
