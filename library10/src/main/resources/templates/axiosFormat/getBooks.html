@@ -3,52 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!--  https://masna.ir/school/w3js/default.html -->
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <title>Axios example</title>
     <!-- https://axios-http.com/docs/intro -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Axios example</title>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
-<body>
+<body onload="fetchBooks()">
+<div>
 
-<h3>Table Books</h3>
+    <h3>Table Books</h3>
+    <table class="w3-table-all w3-hoverable" >
+        <tr>
+            <td></td>
+        </tr>
+    </table>
 
-<div id="bookTable">
+    <hr>
+    <button name="newBookToggleButton" onclick="w3.toggleShow('#newBook')">Add new book</button>
+    <hr>
+
+    <div id="newBook" class="w3-container">
+        <form id="createBook">
+            <p>
+                <label for="title">Title</label>
+                <input  type="text" name="title" class="w3-input" id="title" placeholder="enter Title book"></p>
+            <p>
+                <label for="isbn">ISBN</label>
+                <input  type="text" name="isbn" class="w3-input" id="isbn" placeholder="enter ISBN book"></p>
+            <p>
+                <label for="pages">Pages</label>
+                <input type="number" name="pages" class="w3-input" id="pages" placeholder="enter number pages book"  ></p>
+            <p>
+                <label for="author">Author</label>
+                <input  type="text" name="author" class="w3-input" id="author" placeholder="enter Author book" ></p>
+            <p>
+                <label for="publishedYear">Published Year</label>
+                <input  type="number" name="publishedYear" class="w3-input" id="publishedYear" placeholder="enter publishedYear book"></p>
+
+            <div class="w3-container w3-padding-16">
+                <button type="submit" class="w3-button w3-padding-16 w3-light-grey w3-right w3-margin-right"/>
+                Add new book</button>
+            </div>
+        </form>
+    </div>
+
 </div>
-
-<br>
-<p>
-    <button onclick="w3.toggleShow('#newBook')" class="w3-button w3-padding-16 w3-light-grey w3-right w3-margin-right">Add</button>
-</p>
-
-
-<div id="newBook" class="w3-container">
-    <form action="insertBook" >
-        <p>
-            <label for="title">Title</label>
-            <input  type="text" name="title" class="w3-input" id="title"></p>
-        <p>
-            <label for="isbn">ISBN</label>
-            <input  type="text" name="isbn" class="w3-input" id="isbn"></p>
-        <p>
-            <label for="pages">Pages</label>
-            <input type="number" name="pages" class="w3-input" id="pages" ></p>
-        <p>
-            <label for="author">Author</label>
-            <input  type="text" name="author" class="w3-input" id="author" ></p>
-        <p>
-            <label for="publishedYear">Published Year</label>
-            <input  type="number" name="publishedYear" class="w3-input" id="publishedYear" ></p>
-        <div class="w3-container w3-padding-16">
-            <input type="submit" value="Add new book" class="w3-button w3-padding-16 w3-light-grey w3-right w3-margin-right"/>
-        </div>
-    </form>
-</div>
-
+</body>
 
 <script src="/js/axios_get.js"></script>
 
-</body>
 </html>

@@ -19,4 +19,11 @@ public class LibraryRestController {
         return bookService.getAllBooks();
 
     }
+
+    @PostMapping(path="createBook", consumes = "application/JSON")
+    public Book addBook(@RequestBody Book book){
+        //
+        Book bookCreated = bookService.createBook(book);
+        return bookCreated ;
+    }
 }
