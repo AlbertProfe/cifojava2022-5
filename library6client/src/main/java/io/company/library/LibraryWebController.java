@@ -67,18 +67,6 @@ public class LibraryWebController {
         } else return "notfound.html";
     }
 
-    @RequestMapping("/javafaker")
-    public String createFakeBooks( @RequestParam("qtyBooks") int qty ){
-
-        //method while to create books
-        //bookservice.save(book)
-
-        System.out.println("we are going to create 100 books");
-
-        return "redirect:books";
-
-    }
-
     @RequestMapping("/detailBook")
     public String detailBook(@RequestParam("bookIdFromView") Long id) {
         //
