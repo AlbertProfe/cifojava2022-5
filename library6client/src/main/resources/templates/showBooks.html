@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+
+    <div class="w3-container w3-sand">
+    <h1>Spring Boot Books Example .....</h1>
+    <h5>table of books from @Controller @Service @Repository and H2 DB</h5>
+    </div>
+    <Br>
+
+    <p >Aeat Link</p>
+    <p th:text ="${aeatName}">Aeat Link</p>
+    <p >Aeat</p>
+    <p th:text ="${aeat}">Aeat</p>
+    <p >Never</p>
+    <p th:text ="${changeInLove}">Never</p>
+    <div >
+        <p><a th:href="@{/library/javafaker(qtyBooks=100)}" class="w3-button w3-cyan">Create fake books on H2 -100-</a></p>
+    </div>
+
+    <div >
+        <p><a th:href="@{/library/javafaker}" class="w3-button w3-blue">Create fake books on H2 -500-</a></p>
+    </div>
+
+    <table class="w3-table-all w3-hoverable" >
+        <tr>
+            <td>BookId</td>
+            <td>Title</td>
+            <td>ISBN</td>
+            <td>Pages</td>
+            <td>Published Year</td>
+            <td>Author</td>
+            <td>Delete</td>
+            <td>Update</td>
+            <td>Detail</td>
+        </tr>
+        <tr th:each="book:${booksfromController}">
+
+            <td th:text="${book.bookId}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.pages}"></td>
+            <td th:text="${book.publishedYear}"></td>
+            <td th:text="${book.author}"></td>
+
+            <td> <a th:href ="@{deleteBook(bookIdFromView=${book.bookId})}"
+                    class="w3-button w3-red">Delete this book</a> </td>
+
+            <td> <a th:href ="@{updateBook(bookIdFromView=${book.bookId})}"
+                    class="w3-button w3-cyan">Update this book</a> </td>
+
+            <td> <a th:href ="@{detailBook(bookIdFromView=${book.bookId})}"
+                    class="w3-button w3-black">Detail book</a> </td>
+
+        </tr>
+    </table>
+
+    <p>
+        <a th:href="@{/library/newBook}" class="w3-button w3-blue">Add new book</a>
+    </p>
+
+
+</div>
+
+</body>
+</html>
