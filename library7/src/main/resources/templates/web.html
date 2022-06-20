@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+<div class="w3-panel w3-padding-32">
+    <h1>Spring Boot Books Example .....</h1>
+    <h3>table of static books</h3>
+
+    <table class="w3-table-all w3-hoverable" >
+        <tr th:each="book:${booksfromController}">
+
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.ISBN}"></td>
+            <td th:text="${book.pages}"></td>
+            <td th:text="${book.year}"></td>
+            <td th:text="${book.author}"></td>
+
+            <td> <a th:href ="@{deleteBook(titleFromView=${book.title})}"
+                    class="w3-button w3-red">  Delete this book </a> </td>
+
+            <td> <a th:href ="@{updateBook(titleFromView=${book.title})}"
+                    class="w3-button w3-cyan">  Update this book </a> </td>
+
+        </tr>
+    </table>
+
+    <p>
+        <a th:href="@{/books/newBook}" class="w3-button w3-blue">Add new book</a>
+    </p>
+
+</div>
+</body>
+</html>
