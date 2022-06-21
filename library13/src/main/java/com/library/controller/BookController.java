@@ -26,7 +26,7 @@ public class BookController {
         model.addAttribute("books", reactiveDataDrivenMode);
 
         // classic, wait repository loaded all and display it.
-        //model.addAttribute("movies", movieRepository.findAll());
+        //model.addAttribute("books", bookRepository.findAll());
 
         return "index";
 
@@ -36,7 +36,7 @@ public class BookController {
 //    public String indexMono(final Model model) {
 //
 //        IReactiveDataDriverContextVariable reactiveDataDrivenMode =
-//                new ReactiveDataDriverContextVariable(booksRepository.findAll(), 1);
+//                new ReactiveDataDriverContextVariable(bookRepository.findAll(), 1);
 //
 //        model.addAttribute("books", reactiveDataDrivenMode);
 //
