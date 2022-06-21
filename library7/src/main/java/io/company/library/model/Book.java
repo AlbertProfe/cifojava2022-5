@@ -1,4 +1,4 @@
-package io.company.library;
+package io.company.library.model;
 
 //https://projectlombok.org/features/all
 import lombok.*;
