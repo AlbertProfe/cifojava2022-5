@@ -36,9 +36,9 @@ public class BookController {
 //    public String indexMono(final Model model) {
 //
 //        IReactiveDataDriverContextVariable reactiveDataDrivenMode =
-//                new ReactiveDataDriverContextVariable(movieRepository.findAll(), 1);
+//                new ReactiveDataDriverContextVariable(booksRepository.findAll(), 1);
 //
-//        model.addAttribute("movies", reactiveDataDrivenMode);
+//        model.addAttribute("books", reactiveDataDrivenMode);
 //
 //
 //
