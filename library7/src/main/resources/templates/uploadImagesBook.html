@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Spring Boot & Thymeleaf File Upload</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-
 <body>
-<form method="POST" action="/api/addBook" enctype="multipart/form-data" >
-  <input type="file" name="file" id="file" /> <br/>
-  <input type="text" value="/tmp" name="destination"/><br/>
-  <input type="submit" value="Upload" name="upload" id="upload" />
+
+<div th:if="${message}">
+  <h2 th:text="${message}"/>
+</div>
+
+<form action="#"
+      th:action="@{sendBookImage}" enctype="multipart/form-data"      method="post">
+  <table>
+    <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+    <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+  </table>
 </form>
 </body>
 </body>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 <body>
 <div class="w3-panel w3-padding-32">
     <h1>Spring Boot Books Example .....</h1>
@@ -13,7 +13,7 @@
         <tr th:each="book:${booksfromController}">
 
             <td th:text="${book.title}"></td>
-            <td th:text="${book.ISBN}"></td>
+            <td th:text="${book.isbn}"></td>
             <td th:text="${book.pages}"></td>
             <td th:text="${book.year}"></td>
             <td th:text="${book.author}"></td>
@@ -29,6 +29,9 @@
 
     <p>
         <a th:href="@{/books/newBook}" class="w3-button w3-blue">Add new book</a>
+    </p>
+    <p>
+        <a th:href="@{/web/bookImage}" class="w3-button w3-blue">Upload image</a>
     </p>
 
 </div>
