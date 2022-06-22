@@ -26,7 +26,7 @@ public class BookImagesController {
     @Autowired
     BookImagesRepository bookImagesRepository;
 
-    @PostMapping()
+    @PostMapping("/uploadImage")
     public BookImages saveBookImage( @RequestParam String name, @RequestParam MultipartFile file) throws IOException {
         BookImages bookImage  = new BookImages();
         bookImage.setName(name);
