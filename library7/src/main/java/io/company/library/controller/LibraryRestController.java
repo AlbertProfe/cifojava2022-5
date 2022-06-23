@@ -26,7 +26,7 @@ public class LibraryRestController {
 
     //CRUD: read, find one book by id
     @GetMapping("getBook")
-    public Book findBookById(Long id){
+    public Book findBookById(String id){
         //
         Optional<Book> bookFound = bookrepository.findBookById(id);
         if (bookFound.isPresent()) return  bookFound.get();
@@ -44,7 +44,7 @@ public class LibraryRestController {
 
     //CRUD: delete
     @DeleteMapping("deleteBook")
-    public ResponseEntity<Book> deleteBook (@RequestParam Long id) {
+    public ResponseEntity<Book> deleteBook (@RequestParam String id) {
         //
         HttpHeaders headers = new HttpHeaders();
         headers.add("operation","deleteBook");
@@ -64,7 +64,7 @@ public class LibraryRestController {
 
     //CRUD: update
     @PutMapping("/updateBook/{id}")
-    public ResponseEntity<Book> updateBook (@PathVariable Long id, @RequestBody Book dataBook) {
+    public ResponseEntity<Book> updateBook (@PathVariable String id, @RequestBody Book dataBook) {
 
         Optional<Book> bookFound = bookrepository.findBookById(id);
 

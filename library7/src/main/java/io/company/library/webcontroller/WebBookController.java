@@ -1,5 +1,6 @@
 package io.company.library.webcontroller;
 
+import io.company.library.model.Book;
 import io.company.library.model.BookImages;
 import io.company.library.repository.BookImagesRepository;
 import io.company.library.repository.BookRepository;
@@ -7,14 +8,12 @@ import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("web")
@@ -38,11 +37,36 @@ public class WebBookController {
         return "web";
     }
 
-    @RequestMapping("removeBook")
-    public String deleteBook(@RequestParam String titleFromView){
+    @RequestMapping("/newBook")
+    public String newBook() {
+        return "newBook";
+    }
+
+    @RequestMapping("/insertBook")
+    public String insertBook(Book book) {
         //
-        System.out.println("bookTilte" + titleFromView);
-        return "bookdeleted";
+        bookrepository.save(book);
+        return "redirect:/web/home";
+    }
+
+    @RequestMapping("deleteBook")
+    public String deleteBook(@RequestParam("id") String id){
+        //
+        //System.out.println("bookId" + id);
+        bookrepository.deleteBookById(id);
+        return "redirect:/web/home";
+    }
+
+    @RequestMapping("detailBook")
+    public String detailBook(@RequestParam("id") String id, Model model){
+        //
+        Optional<Book> bookFound = bookrepository.findBookById(id);
+        if (bookFound.isPresent()) {
+            model.addAttribute("bookfromController", bookFound.get());
+            return "detailBook.html";
+        } else return "notfound.html";
+
+
     }
 
     @GetMapping("bookImage")
@@ -52,14 +76,11 @@ public class WebBookController {
     }
 
     @PostMapping("sendBookImage")
-    public String sendBookImage ( @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException {
+    public String sendBookImage ( @RequestParam("file") MultipartFile file) throws IOException {
 
         BookImages bookImage  = new BookImages();
         bookImage.setName("test");
         bookImage.setImage( new Binary(file.getBytes() ));
-
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
 
         bookImagesRepository.save(bookImage);
 

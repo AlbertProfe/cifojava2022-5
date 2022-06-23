@@ -6,8 +6,8 @@
 </head>
 <body>
 <div class="w3-panel w3-padding-32">
-    <h1>Spring Boot Books Example .....</h1>
-    <h3>table of static books</h3>
+    <h1>Library 7</h1>
+    <h3>table of books from MongoDB</h3>
 
     <table class="w3-table-all w3-hoverable" >
         <tr th:each="book:${booksfromController}">
@@ -18,17 +18,17 @@
             <td th:text="${book.year}"></td>
             <td th:text="${book.author}"></td>
 
-            <td> <a th:href ="@{deleteBook(titleFromView=${book.title})}"
-                    class="w3-button w3-red">  Delete this book </a> </td>
+            <td> <a th:href ="@{deleteBook(id=${book.id})}"
+                    class="w3-button w3-red">  Delete  </a> </td>
 
-            <td> <a th:href ="@{updateBook(titleFromView=${book.title})}"
-                    class="w3-button w3-cyan">  Update this book </a> </td>
+            <td> <a th:href ="@{detailBook(id=${book.id})}"
+                    class="w3-button w3-cyan">  Detail </a> </td>
 
         </tr>
     </table>
 
     <p>
-        <a th:href="@{/books/newBook}" class="w3-button w3-blue">Add new book</a>
+        <a th:href="@{/web/newBook}" class="w3-button w3-blue">Add new book</a>
     </p>
     <p>
         <a th:href="@{/web/bookImage}" class="w3-button w3-blue">Upload image</a>

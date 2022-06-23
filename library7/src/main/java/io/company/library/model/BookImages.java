@@ -16,6 +16,7 @@ public class BookImages {
     private String id;
     private String name;
     private Binary image;
+    private String bookId;
 
 
 }
