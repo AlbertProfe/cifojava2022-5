@@ -1,5 +1,9 @@
 package io.company.library.model;
 
+import org.springframework.context.annotation.Bean;
+
+import javax.persistence.Entity;
+
 public class TextMessage {
 
     private String content;

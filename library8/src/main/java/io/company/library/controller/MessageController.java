@@ -15,8 +15,10 @@ public class MessageController {
 	public TextMessage textMessage(TextMessage inputMessage) {
 
 		System.out.println("inputMessage" + inputMessage);
-		TextMessage outputMessage = new TextMessage ("This is the response from server. This is your original message: "
-				+ HtmlUtils.htmlEscape(inputMessage.getContent()) + ". Please, enjoy Websockets!");
+		TextMessage outputMessage = new TextMessage (
+				"This is the response from server. This is your original message: "
+				+ HtmlUtils.htmlEscape(inputMessage.getContent()) +
+						". Please, enjoy Websockets!");
 
 		return outputMessage;
 	}
